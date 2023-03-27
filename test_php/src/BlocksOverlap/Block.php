@@ -6,8 +6,6 @@ use App\BlocksOverlap\Exception\BlockIsNotRectangleException;
 
 class Block
 {
-    //bloque un longitud variable > 1 y la anchura es 1 siempre
-    //validar tambien las orientacion con las constantes
     const HORIZONTAL_ORIENTATION = 'h';
     const VERTICAL_ORIENTATION = 'v';
     private int $id;
@@ -18,7 +16,6 @@ class Block
 
     public function __construct(int $id, string $orientation, int $x, int $y, int $blockLength)
     {
-
         if ($blockLength <= 1){
             throw BlockIsNotRectangleException::msg($blockLength);
         }
@@ -36,16 +33,16 @@ class Block
         $orientation = $this->getOrientation() === self::VERTICAL_ORIENTATION ?
             self::VERTICAL_ORIENTATION : self::HORIZONTAL_ORIENTATION;
 
-        //v
+
 
         $initialPosition = $orientation === self::HORIZONTAL_ORIENTATION ? $this->getX() : $this->getY();
-        //3
+
 
         $otherPosition = $orientation === self::HORIZONTAL_ORIENTATION ? $this->getY() : $this->getX();
-        //2
+
 
         $otherOrientationKey = $orientation === self::HORIZONTAL_ORIENTATION ? self::VERTICAL_ORIENTATION : self::HORIZONTAL_ORIENTATION;
-        //h
+
 
         $range = [];
 
