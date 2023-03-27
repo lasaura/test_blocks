@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+./down
+./up -d
+./composer install
+./test
+

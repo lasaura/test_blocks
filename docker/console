@@ -1,0 +1,3 @@
+#!/bin/bash
+
+docker exec -it test_blocks.php php bin/console $@
