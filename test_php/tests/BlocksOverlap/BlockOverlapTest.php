@@ -19,6 +19,7 @@ class BlockOverlapTest extends TestCase
         $block = new Block(0, 'h', 2, 3, 5);
 
         $range = $block->range();
+
         $this->assertIsArray($range);
 
         $this->assertArrayHasKey('h', $range[0]);
@@ -31,22 +32,20 @@ class BlockOverlapTest extends TestCase
         $this->assertEquals(6, $range[0]['h'][4]);
 
         $this->assertEquals(3, $range[1]['v'][0]);
-
-
     }
 
     public function testWip()
     {
-
+        //Commented inputs are tested below
         $positions = [
-          // '0 h 2 3 5 1 v 3 1 1'  => false,
-          // '0 h 2 3 1 1 h 2 3 1'  => true,
+          //'0 h 2 3 5 1 v 3 1 1'  => false,
+          //'0 h 2 3 1 1 h 2 3 1'  => true,
             '0 h 2 3 5 1 h 3 3 2'  => true,
             '0 h 2 3 5 1 h 4 1 2'  => true,
             '0 h 2 3 5 1 v 3 1 3'  => true,
             '0 h 8 7 2 1 v 10 7 6' => false,
             '0 h 2 3 5 1 v 3 1 2'  => false,
-         // '0 h 4 3 3 2 v 6 2 2'  => true,
+          //'0 h 4 3 3 2 v 6 2 2'  => true,
             '0 v 3 3 2 1 v 3 5 2'  => false,
             '0 h 1 3 2 1 h 5 3 2'  => false
         ];
@@ -61,13 +60,11 @@ class BlockOverlapTest extends TestCase
 
     public function testIfBlockIsNotRectangleShouldThrowBlockIsNotRectangleException()
     {
-
         $this->expectException(BlockIsNotRectangleException::class);
         new Matrix(new BlockInputDto('0 h 2 3 5 1 v 3 1 1'));
 
         $this->expectException(BlockIsNotRectangleException::class);
         new Matrix(new BlockInputDto('0 h 2 3 1 1 h 2 3 1'));
-
     }
 
     public function testIfBlockHaveInvalidIdValueShouldThrowBlockIdException()
